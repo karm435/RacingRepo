@@ -19,7 +19,7 @@ class RacingModel: ObservableObject {
       
       raceSummaries = result.data.raceSummaries.nextRaces
     } catch {
-      print(error.localizedDescription)
+      print(error)
     }
   }
 }
