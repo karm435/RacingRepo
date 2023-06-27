@@ -25,8 +25,10 @@ public class NetworkClient {
     guard let httpResponse = httpResponse as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
       throw NetworkError.invalidServerResponse
     }
-      
-    let result = try JSONDecoder().decode(Entity.self, from: data)
+    let jsonDecoder = JSONDecoder()
+    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+    
+    let result = try jsonDecoder.decode(Entity.self, from: data)
     
     
     

@@ -11,14 +11,11 @@ struct ContentView: View {
   @EnvironmentObject var racingModel: RacingModel
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+          Text("\(racingModel.raceSummaries.count)")
         }
         .padding()
         .task {
-          
+          await racingModel.loadRaces()
         }
     }
 }

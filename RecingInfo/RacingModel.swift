@@ -3,14 +3,8 @@ import Foundation
 import Models
 import Network
 
-public enum NextRacesViewState {
-  case loading
-  case error
-  case display(raceSummaries: RaceSummaries)
-}
-
 class RacingModel: ObservableObject {
-  @Published var racingSummaries = RaceSummaries(nextRaces: [])
+  @Published var raceSummaries: [RaceSummary] = []
   
   let networkClient: NetworkClient
   
@@ -18,7 +12,14 @@ class RacingModel: ObservableObject {
     self.networkClient = networkClient
   }
   
-  public func loadRaces() async {
-    
+  @MainActor
+  public func loadRaces() async -> Void {
+    do {
+      let result: GetRacesResponse = try await networkClient.get("https://api.neds.com.au/rest/v1/racing/?method=nextraces&count=10")
+      
+      raceSummaries = result.data.raceSummaries.nextRaces
+    } catch {
+      print(error.localizedDescription)
+    }
   }
 }
