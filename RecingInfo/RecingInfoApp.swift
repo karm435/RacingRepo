@@ -13,8 +13,10 @@ struct RecingInfoApp: App {
   @StateObject private var racingModel: RacingModel = .init(networkClient: NetworkClient())
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .environmentObject(racingModel)
+      NavigationStack {
+        ContentView()
+          .environmentObject(racingModel)
+      }
     }
   }
 }

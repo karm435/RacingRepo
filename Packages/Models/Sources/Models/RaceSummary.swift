@@ -22,42 +22,8 @@ public struct RaceSummary: Decodable {
   public let raceId: UUID
   public let raceName: String
   public let raceNumber: Int
-  public let meetingId: UUID
-  public let meetingName: String
   public let categoryId: UUID
   public let advertisedStart: AdvertisedStart
-  public let raceForm: RaceForm
-  public let venueCountry: String
-  public let venueState: String
-  public let venueName: String
-  public let venueId: String
-}
-
-public struct AdvertisedStart: Codable {
-  public let seconds: Int
-}
-
-public struct RaceForm: Codable {
-  public let distance: Int
-  public let distanceType: DistanceType
-  public let trackCondition: TrackCondition
- // public let raceComment: String
-  public let additionalData: String
-  public let generated: Int
-  public let raceCommentAlternative: String
-  public let silkBaseUrl: String
-}
-
-public struct DistanceType: Codable {
-  public let id: UUID
-  public let name: String
-  public let shortName: String
-}
-
-public struct TrackCondition: Codable {
-  public let id: UUID
-  public let name: String
-  public let shortName: String
 }
 
 extension RaceSummaries: Decodable {
@@ -88,3 +54,6 @@ extension RaceSummary: Identifiable {
     raceId
   }
 }
+
+
+

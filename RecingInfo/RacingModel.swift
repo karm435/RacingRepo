@@ -23,7 +23,7 @@ class RacingModel: ObservableObject {
       allRaces = results
       
       //filter races which are 1 min past start time
-      raceSummaries = allRaces//.sorted(by: { $0.advertisedStart.toDate() > $1.advertisedStart.toDate() })
+      raceSummaries = allRaces.sorted(by: { $0.advertisedStart < $1.advertisedStart })
       
     } catch {
       print(error)
@@ -47,5 +47,4 @@ class RacingModel: ObservableObject {
       return !raceSummary.advertisedStart.isOneMinutePassedStartTime
     }
   }
-  
 }
