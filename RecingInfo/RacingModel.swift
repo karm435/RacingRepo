@@ -23,7 +23,8 @@ class RacingModel: ObservableObject {
       allRaces = results
       
       //filter races which are 1 min past start time
-      raceSummaries = allRaces.sorted(by: { $0.advertisedStart < $1.advertisedStart })
+      let filteredRaces = filterOneMinPastRaces(races: allRaces)
+      raceSummaries = filteredRaces.sorted(by: { $0.advertisedStart < $1.advertisedStart })
       
     } catch {
       print(error)
@@ -32,18 +33,18 @@ class RacingModel: ObservableObject {
   
   @MainActor
   public func autoRefresh() async -> Void {
-    let timer = Timer.publish(every: 1, on: .main, in: .default)
+    let _ = Timer.publish(every: 1, on: .main, in: .default)
       .autoconnect()
       .map { [weak self] _ in
         guard let self else { return [] }
-        return self.filterRaces()
+        return self.filterOneMinPastRaces(races: self.raceSummaries)
       }
       .assign(to: \.raceSummaries, on: self)
       .store(in: &cancellables)
   }
   
-  private func filterRaces() -> [RaceSummary] {
-    return self.raceSummaries.filter { raceSummary in
+  private func filterOneMinPastRaces(races: [RaceSummary]) -> [RaceSummary] {
+    return races.filter { raceSummary in
       return !raceSummary.advertisedStart.isOneMinutePassedStartTime
     }
   }

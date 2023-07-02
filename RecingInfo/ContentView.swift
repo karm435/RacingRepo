@@ -19,12 +19,14 @@ struct ContentView: View {
               Spacer()
               Text(Date(timeIntervalSince1970: TimeInterval(raceSummary.advertisedStart.seconds)), style: .relative)
             }
+            Text("Is min in race \(raceSummary.advertisedStart.isOneMinutePassedStartTime ? "Yes" : "No")")
           }
         }
       }
       .navigationTitle(Text("Next To Go Racing"))
       .task {
         await racingModel.loadRaces()
+        await racingModel.autoRefresh()
       }
     }
 }
