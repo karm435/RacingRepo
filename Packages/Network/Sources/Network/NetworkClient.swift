@@ -29,9 +29,7 @@ public class NetworkClient {
     jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
     
     let result = try jsonDecoder.decode(Entity.self, from: data)
-    
-    
-    
+  
     return result
   }
 }
