@@ -55,5 +55,12 @@ extension RaceSummary: Identifiable {
   }
 }
 
+extension RaceSummary {
+  var raceCategory: RaceCategory? {
+    return RaceCategory(rawValue: categoryId.uuidString)
+  }
+  
+  
+}
 
 
