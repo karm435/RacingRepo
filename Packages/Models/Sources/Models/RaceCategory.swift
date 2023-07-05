@@ -13,9 +13,9 @@ public enum RaceCategory: String, Identifiable, Hashable, CaseIterable {
   case harnessRacing = "161d9be2-e909-4326-8c2c-35ed71fb460b"
   case horseRacing = "4a2788f8-e825-4d36-9894-efd4baf1cfae"
   
-  public var categoryId: UUID {
-      return UUID(uuidString: self.rawValue)!
-  }
+//  public var categoryId: UUID {
+//      return UUID(uuidString: self.rawValue)!
+//  }
   
   public var iconName: String {
     switch self {
@@ -25,6 +25,17 @@ public enum RaceCategory: String, Identifiable, Hashable, CaseIterable {
       return "harness"
     case .horseRacing:
       return "horse-racing"
+    }
+  }
+  
+  public var name: String {
+    switch self {
+    case .greyhoundRacing:
+      return "Greyhound"
+    case .harnessRacing:
+      return "Harness"
+    case .horseRacing:
+      return "Horse"
     }
   }
 }

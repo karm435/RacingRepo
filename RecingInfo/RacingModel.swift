@@ -6,11 +6,10 @@ import Combine
 
 class RacingModel: ObservableObject {
   @Published var nextToGoRaceSummaries: [RaceSummary] = []
+  @Published var searchTokens: [RaceCategory] = []
+  @Published var isSearching = false
   
-  @Published var filteredRaces: [RaceSummary] = []
-  
-  @Published var searchText: String = ""
-  
+  var allRaces: [RaceSummary] = []
   let networkClient: NetworkClient
   var cancellables = Set<AnyCancellable>()
   
@@ -25,12 +24,9 @@ class RacingModel: ObservableObject {
   init(networkClient: NetworkClient) {
     self.networkClient = networkClient
     
-    $searchText
-      .removeDuplicates()
-      .sink { [weak self] searchTerm in
-        self?.filterRaces(searchText: searchTerm)
-      }
-      .store(in: &cancellables)
+    $searchTokens
+      .sink { [unowned self] _ in        self.filterRaces()
+      }.store(in: &cancellables)
   }
   
   @MainActor
@@ -38,7 +34,7 @@ class RacingModel: ObservableObject {
     do {
       let result: GetRacesResponse = try await networkClient.get("https://api.neds.com.au/rest/v1/racing/?method=nextraces&count=10")
       
-      let allRaces = result.data.raceSummaries.nextRaces
+      allRaces = result.data.raceSummaries.nextRaces
       
       nextToGoRaceSummaries = filterOneMinPastRaces(races: allRaces)
       
@@ -49,30 +45,49 @@ class RacingModel: ObservableObject {
   
   @MainActor
   public func autoRefresh() async -> Void {
-    let _ = Timer.publish(every: 1, on: .main, in: .default)
+    let timerEverySeconds = 60.0
+    let _ = Timer.publish(every: timerEverySeconds, on: .main, in: .default)
       .autoconnect()
       .map { [weak self] _ in
         guard let self else { return [] }
-        return self.filterOneMinPastRaces(races: self.nextToGoRaceSummaries)
+        return self.filterOneMinPastRaces(races: self.allRaces)
       }
       .assign(to: \.nextToGoRaceSummaries, on: self)
       .store(in: &cancellables)
   }
   
+  public func updateSearch(cat: RaceCategory) {
+    if searchTokens.isSelected(category: cat) {
+      searchTokens.removeAll(where: { $0 == cat })
+    } else {
+      searchTokens.append(cat)
+    }
+  }
+  
   private func filterOneMinPastRaces(races: [RaceSummary]) -> [RaceSummary] {
+    print("races count:", self.nextToGoRaceSummaries.count)
     return races.filter { raceSummary in
       return !raceSummary.advertisedStart.isOneMinutePassedStartTime
     }
   }
   
   
-  private func filterRaces(
-    searchText: String
-  ) {
-    guard !searchText.isEmpty else { return }
-    
-    nextToGoRaceSummaries = nextToGoRaceSummaries.filter {
-      $0.raceName.lowercased().contains(searchText.lowercased())
+  private func filterRaces() {
+    isSearching = true
+    guard !searchTokens.isEmpty else {
+      self.nextToGoRaceSummaries = filterOneMinPastRaces(races: self.allRaces)
+      return
     }
+    
+    nextToGoRaceSummaries = nextToGoRaceSummaries.filter { raceSummary in
+      searchTokens.map({ $0.rawValue.lowercased() }).contains(raceSummary.categoryId.uuidString.lowercased())
+    }
+    isSearching = false
+  }
+}
+
+extension Array<RaceCategory> {
+  func isSelected(category: RaceCategory) -> Bool {
+    self.contains(where: { $0 == category })
   }
 }
