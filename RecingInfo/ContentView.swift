@@ -25,6 +25,7 @@ struct ContentView: View {
                 Image(cat.iconName)
                   .resizable()
                   .frame(width: filterImageSize, height: filterImageSize)
+                  .accessibilityLabel(Text(cat.name))
                 
                 if racingModel.searchTokens.isSelected(category: cat) {
                   RoundedRectangle(cornerRadius: 6)
@@ -35,6 +36,7 @@ struct ContentView: View {
               }
             }
             .frame(maxWidth: .infinity)
+            .accessibilityLabel("Filter races for \(cat.name)")
         }
       }
       .fixedSize(horizontal: false, vertical: true)
@@ -55,6 +57,7 @@ struct ContentView: View {
                   .foregroundColor(.secondary)
               }
             }
+            .accessibilityLabel(Text("\(raceSummary.raceName)"))
           }
         }
       }
