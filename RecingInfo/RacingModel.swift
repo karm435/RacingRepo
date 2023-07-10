@@ -7,7 +7,6 @@ import Combine
 class RacingModel: ObservableObject {
   @Published var nextToGoRaceSummaries: [RaceSummary] = []
   @Published var searchTokens: [RaceCategory] = []
-  @Published var isSearching = false
   
   var allRaces: [RaceSummary] = []
   let networkClient: NetworkClient
@@ -25,7 +24,8 @@ class RacingModel: ObservableObject {
     self.networkClient = networkClient
     
     $searchTokens
-      .sink { [unowned self] _ in        self.filterRaces()
+      .sink { [unowned self] tokens in
+        self.filterRaces(tokens: tokens)
       }.store(in: &cancellables)
   }
   
@@ -48,11 +48,10 @@ class RacingModel: ObservableObject {
     let timerEverySeconds = 60.0
     let _ = Timer.publish(every: timerEverySeconds, on: .main, in: .default)
       .autoconnect()
-      .map { [weak self] _ in
-        guard let self else { return [] }
-        return self.filterOneMinPastRaces(races: self.allRaces)
-      }
-      .assign(to: \.nextToGoRaceSummaries, on: self)
+      .sink(receiveValue: { [weak self] _ in
+        guard let self else { return  }
+        self.filterRaces(tokens: self.searchTokens)
+      })
       .store(in: &cancellables)
   }
   
@@ -72,17 +71,17 @@ class RacingModel: ObservableObject {
   }
   
   
-  private func filterRaces() {
-    isSearching = true
-    guard !searchTokens.isEmpty else {
+  private func filterRaces(tokens: [RaceCategory]) {
+    guard !tokens.isEmpty else {
       self.nextToGoRaceSummaries = filterOneMinPastRaces(races: self.allRaces)
       return
     }
-    
-    nextToGoRaceSummaries = nextToGoRaceSummaries.filter { raceSummary in
-      searchTokens.map({ $0.rawValue.lowercased() }).contains(raceSummary.categoryId.uuidString.lowercased())
+    let oneMinPastRaces = filterOneMinPastRaces(races: self.allRaces)
+    nextToGoRaceSummaries = oneMinPastRaces.filter { raceSummary in
+      let idsToFilter = tokens.map{ $0.rawValue.lowercased() }
+      return idsToFilter.contains(raceSummary.categoryId.uuidString.lowercased())
     }
-    isSearching = false
+    
   }
 }
 

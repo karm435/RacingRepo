@@ -47,13 +47,13 @@ struct ContentView: View {
                   .resizable()
                   .frame(width: imageSize, height: imageSize)
               }
-              
-              Text(raceSummary.raceName)
-                .lineLimit(2)
-              
-              Spacer()
-              Text(Date(timeIntervalSince1970: TimeInterval(raceSummary.advertisedStart.seconds)), style: .relative)
-              Text("Is min in race \(raceSummary.advertisedStart.isOneMinutePassedStartTime ? "Yes" : "No")")
+              VStack(alignment: .leading) {
+                Text(raceSummary.raceName)
+                  .lineLimit(1)
+                Text(Date(timeIntervalSince1970: TimeInterval(raceSummary.advertisedStart.seconds)), style: .relative)
+                  .font(.footnote)
+                  .foregroundColor(.secondary)
+              }
             }
           }
         }
