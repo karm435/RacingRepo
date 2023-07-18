@@ -52,9 +52,10 @@ struct ContentView: View {
               VStack(alignment: .leading) {
                 Text(raceSummary.raceName)
                   .lineLimit(1)
-                Text(Date(timeIntervalSince1970: TimeInterval(raceSummary.advertisedStart.seconds)), style: .relative)
+                Text("\(raceSummary.advertisedStart.isPassedStartTime ? "-" : "")") + Text(Date(timeIntervalSince1970: TimeInterval(raceSummary.advertisedStart.seconds)), style: .relative)
                   .font(.footnote)
-                  .foregroundColor(.secondary)
+                  .foregroundColor(raceSummary.advertisedStart.isPassedStartTime ? .red : .secondary)
+                  
               }
             }
             .accessibilityLabel(Text("\(raceSummary.raceName)"))

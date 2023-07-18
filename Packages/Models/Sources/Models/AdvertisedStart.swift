@@ -24,8 +24,12 @@ extension AdvertisedStart: Comparable {
 extension AdvertisedStart {
   
   public var isOneMinutePassedStartTime: Bool {
-    let oneMinFromNow = Calendar.current.date(byAdding: .minute, value: 1, to: .now)!
-    return  seconds < Int(oneMinFromNow.timeIntervalSince1970)
+    let oneMinFromNow = Calendar.current.date(byAdding: .minute, value: -1, to: .now)!
+    return  seconds <= Int(oneMinFromNow.timeIntervalSince1970)
+  }
+  
+  public var isPassedStartTime: Bool {
+    return  seconds < Int(Date.now.timeIntervalSince1970)
   }
   
   public var since: String {

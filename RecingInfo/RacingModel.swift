@@ -45,7 +45,7 @@ class RacingModel: ObservableObject {
   
   @MainActor
   public func autoRefresh() async -> Void {
-    let timerEverySeconds = 60.0
+    let timerEverySeconds = 1.0
     let _ = Timer.publish(every: timerEverySeconds, on: .main, in: .default)
       .autoconnect()
       .sink(receiveValue: { [weak self] _ in
