@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE5812042A64EFBF00340A32 /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = AE5812032A64EFBF00340A32 /* Utils */; };
 		AE5812062A64F68400340A32 /* SampleRaces.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5812052A64F68400340A32 /* SampleRaces.json */; };
 		AE73690E2A4A4FDB009442AA /* RecingInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73690D2A4A4FDB009442AA /* RecingInfoApp.swift */; };
 		AE7369102A4A4FDB009442AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73690F2A4A4FDB009442AA /* ContentView.swift */; };
@@ -19,8 +18,8 @@
 		AE8E95CD2A4A642F0026CEAF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AE8E95CC2A4A642F0026CEAF /* Network */; };
 		AE8E95CF2A4A64620026CEAF /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = AE8E95CE2A4A64620026CEAF /* Models */; };
 		AE8E95D42A4A68BD0026CEAF /* RacingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E95D32A4A68BD0026CEAF /* RacingModel.swift */; };
-		AED6D3002A60A62B00A5C3AE /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = AED6D2FF2A60A62B00A5C3AE /* Utils */; };
 		AED6D3062A60AB2800A5C3AE /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED6D3052A60AB2800A5C3AE /* MockNetworkClient.swift */; };
+		AEFB4CE22A662082008CAB42 /* AppUtils in Frameworks */ = {isa = PBXBuildFile; productRef = AEFB4CE12A662082008CAB42 /* AppUtils */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE3BCCB42A5D3B8300CAF00F /* Utils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Utils; path = Packages/Utils; sourceTree = "<group>"; };
 		AE5812052A64F68400340A32 /* SampleRaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SampleRaces.json; sourceTree = "<group>"; };
 		AE73690A2A4A4FDB009442AA /* RecingInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecingInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE73690D2A4A4FDB009442AA /* RecingInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecingInfoApp.swift; sourceTree = "<group>"; };
@@ -58,6 +56,7 @@
 		AE8E95CB2A4A64220026CEAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE8E95D32A4A68BD0026CEAF /* RacingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingModel.swift; sourceTree = "<group>"; };
 		AED6D3052A60AB2800A5C3AE /* MockNetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
+		AEFB4CE02A662059008CAB42 /* AppUtils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AppUtils; path = Packages/AppUtils; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED6D3002A60A62B00A5C3AE /* Utils in Frameworks */,
 				AE8E95CF2A4A64620026CEAF /* Models in Frameworks */,
 				AE8E95CD2A4A642F0026CEAF /* Network in Frameworks */,
 			);
@@ -75,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE5812042A64EFBF00340A32 /* Utils in Frameworks */,
+				AEFB4CE22A662082008CAB42 /* AppUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +90,7 @@
 		AE7369012A4A4FDB009442AA = {
 			isa = PBXGroup;
 			children = (
-				AE3BCCB42A5D3B8300CAF00F /* Utils */,
+				AEFB4CE02A662059008CAB42 /* AppUtils */,
 				AE8E95CA2A4A62700026CEAF /* Network */,
 				AE7369372A4A5256009442AA /* Models */,
 				AE73690C2A4A4FDB009442AA /* RecingInfo */,
@@ -187,7 +185,6 @@
 			packageProductDependencies = (
 				AE8E95CC2A4A642F0026CEAF /* Network */,
 				AE8E95CE2A4A64620026CEAF /* Models */,
-				AED6D2FF2A60A62B00A5C3AE /* Utils */,
 			);
 			productName = RecingInfo;
 			productReference = AE73690A2A4A4FDB009442AA /* RecingInfo.app */;
@@ -208,7 +205,7 @@
 			);
 			name = RecingInfoTests;
 			packageProductDependencies = (
-				AE5812032A64EFBF00340A32 /* Utils */,
+				AEFB4CE12A662082008CAB42 /* AppUtils */,
 			);
 			productName = RecingInfoTests;
 			productReference = AE73691A2A4A4FDE009442AA /* RecingInfoTests.xctest */;
@@ -639,10 +636,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE5812032A64EFBF00340A32 /* Utils */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Utils;
-		};
 		AE8E95CC2A4A642F0026CEAF /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Network;
@@ -651,9 +644,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
 		};
-		AED6D2FF2A60A62B00A5C3AE /* Utils */ = {
+		AEFB4CE12A662082008CAB42 /* AppUtils */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Utils;
+			productName = AppUtils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

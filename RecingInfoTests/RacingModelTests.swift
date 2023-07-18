@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import RecingInfo
-import Utils
+import AppUtils
 import Foundation
 import Models
 
