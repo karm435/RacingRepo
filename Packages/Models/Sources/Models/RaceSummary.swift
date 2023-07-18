@@ -3,15 +3,15 @@ import Foundation
 
 public struct GetRacesResponse: Decodable {
   public let status: Int
-  public let data: RaceSummeriesResponse
+  public var data: RaceSummeriesResponse
 }
 
 public struct RaceSummeriesResponse: Decodable {
-  public let raceSummaries: RaceSummaries
+  public var raceSummaries: RaceSummaries
 }
 
 public struct RaceSummaries {
-  public let nextRaces: [RaceSummary]
+  public var nextRaces: [RaceSummary]
   
   public init(nextRaces: [RaceSummary]) {
     self.nextRaces = nextRaces
@@ -23,7 +23,7 @@ public struct RaceSummary: Decodable {
   public let raceName: String
   public let raceNumber: Int
   public let categoryId: UUID
-  public let advertisedStart: AdvertisedStart
+  public var advertisedStart: AdvertisedStart
 }
 
 extension RaceSummaries: Decodable {

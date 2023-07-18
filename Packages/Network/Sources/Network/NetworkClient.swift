@@ -5,7 +5,7 @@ public enum NetworkError: Error {
   case invalidServerResponse
 }
 
-public class NetworkClient {
+public class NetworkClient: NetworkClientProtocol {
   let urlSession: URLSession
   
   public init() {
@@ -32,4 +32,8 @@ public class NetworkClient {
   
     return result
   }
+}
+
+public protocol NetworkClientProtocol {
+  func get<Entity: Decodable>(_ urlString: String) async throws -> Entity
 }

@@ -9,6 +9,10 @@ import Foundation
 
 public struct AdvertisedStart: Codable {
   public let seconds: Int
+  
+  public init(seconds: Int) {
+    self.seconds = seconds
+  }
 }
 
 extension AdvertisedStart: Comparable {
@@ -20,8 +24,8 @@ extension AdvertisedStart: Comparable {
 extension AdvertisedStart {
   
   public var isOneMinutePassedStartTime: Bool {
-    let date = Date(timeIntervalSince1970: TimeInterval(self.seconds))
-    return  date.addingTimeInterval(60) < .now
+    let oneMinFromNow = Calendar.current.date(byAdding: .minute, value: 1, to: .now)!
+    return  seconds < Int(oneMinFromNow.timeIntervalSince1970)
   }
   
   public var since: String {

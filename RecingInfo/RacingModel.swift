@@ -5,22 +5,22 @@ import Network
 import Combine
 
 class RacingModel: ObservableObject {
-  @Published var nextToGoRaceSummaries: [RaceSummary] = []
-  @Published var searchTokens: [RaceCategory] = []
+  @Published private(set) var searchTokens: [RaceCategory] = []
+  @Published private(set) var nextToGoRaceSummaries: [RaceSummary] = []
   
-  var allRaces: [RaceSummary] = []
-  let networkClient: NetworkClient
-  var cancellables = Set<AnyCancellable>()
+  private(set) var allRaces: [RaceSummary] = []
+  private let networkClient: NetworkClientProtocol
+  private(set)var cancellables = Set<AnyCancellable>()
   
   var orderedTop5Races: [RaceSummary] {
     let top5 = nextToGoRaceSummaries
-      .sorted(by: { $0.advertisedStart < $1.advertisedStart })
+      .sorted(by: { $0.advertisedStart <= $1.advertisedStart })
       .prefix(5)
     
     return Array(top5)
   }
   
-  init(networkClient: NetworkClient) {
+  init(networkClient: NetworkClientProtocol) {
     self.networkClient = networkClient
     
     $searchTokens

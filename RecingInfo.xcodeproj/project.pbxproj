@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE5812042A64EFBF00340A32 /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = AE5812032A64EFBF00340A32 /* Utils */; };
+		AE5812062A64F68400340A32 /* SampleRaces.json in Resources */ = {isa = PBXBuildFile; fileRef = AE5812052A64F68400340A32 /* SampleRaces.json */; };
 		AE73690E2A4A4FDB009442AA /* RecingInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73690D2A4A4FDB009442AA /* RecingInfoApp.swift */; };
 		AE7369102A4A4FDB009442AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73690F2A4A4FDB009442AA /* ContentView.swift */; };
 		AE7369122A4A4FDD009442AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE7369112A4A4FDD009442AA /* Assets.xcassets */; };
 		AE7369152A4A4FDD009442AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE7369142A4A4FDD009442AA /* Preview Assets.xcassets */; };
-		AE73691F2A4A4FDE009442AA /* RecingInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73691E2A4A4FDE009442AA /* RecingInfoTests.swift */; };
+		AE73691F2A4A4FDE009442AA /* RacingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73691E2A4A4FDE009442AA /* RacingModelTests.swift */; };
 		AE7369292A4A4FDE009442AA /* RecingInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7369282A4A4FDE009442AA /* RecingInfoUITests.swift */; };
 		AE73692B2A4A4FDE009442AA /* RecingInfoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE73692A2A4A4FDE009442AA /* RecingInfoUITestsLaunchTests.swift */; };
 		AE8E95CD2A4A642F0026CEAF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AE8E95CC2A4A642F0026CEAF /* Network */; };
 		AE8E95CF2A4A64620026CEAF /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = AE8E95CE2A4A64620026CEAF /* Models */; };
 		AE8E95D42A4A68BD0026CEAF /* RacingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8E95D32A4A68BD0026CEAF /* RacingModel.swift */; };
+		AED6D3002A60A62B00A5C3AE /* Utils in Frameworks */ = {isa = PBXBuildFile; productRef = AED6D2FF2A60A62B00A5C3AE /* Utils */; };
+		AED6D3062A60AB2800A5C3AE /* MockNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED6D3052A60AB2800A5C3AE /* MockNetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +41,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE3BCCB42A5D3B8300CAF00F /* Utils */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Utils; path = Packages/Utils; sourceTree = "<group>"; };
+		AE5812052A64F68400340A32 /* SampleRaces.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SampleRaces.json; sourceTree = "<group>"; };
 		AE73690A2A4A4FDB009442AA /* RecingInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecingInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE73690D2A4A4FDB009442AA /* RecingInfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecingInfoApp.swift; sourceTree = "<group>"; };
 		AE73690F2A4A4FDB009442AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AE7369112A4A4FDD009442AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE7369142A4A4FDD009442AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE73691A2A4A4FDE009442AA /* RecingInfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecingInfoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE73691E2A4A4FDE009442AA /* RecingInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecingInfoTests.swift; sourceTree = "<group>"; };
+		AE73691E2A4A4FDE009442AA /* RacingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingModelTests.swift; sourceTree = "<group>"; };
 		AE7369242A4A4FDE009442AA /* RecingInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecingInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7369282A4A4FDE009442AA /* RecingInfoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecingInfoUITests.swift; sourceTree = "<group>"; };
 		AE73692A2A4A4FDE009442AA /* RecingInfoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecingInfoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 		AE8E95CA2A4A62700026CEAF /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Network; path = Packages/Network; sourceTree = "<group>"; };
 		AE8E95CB2A4A64220026CEAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE8E95D32A4A68BD0026CEAF /* RacingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RacingModel.swift; sourceTree = "<group>"; };
+		AED6D3052A60AB2800A5C3AE /* MockNetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AED6D3002A60A62B00A5C3AE /* Utils in Frameworks */,
 				AE8E95CF2A4A64620026CEAF /* Models in Frameworks */,
 				AE8E95CD2A4A642F0026CEAF /* Network in Frameworks */,
 			);
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE5812042A64EFBF00340A32 /* Utils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +92,7 @@
 		AE7369012A4A4FDB009442AA = {
 			isa = PBXGroup;
 			children = (
+				AE3BCCB42A5D3B8300CAF00F /* Utils */,
 				AE8E95CA2A4A62700026CEAF /* Network */,
 				AE7369372A4A5256009442AA /* Models */,
 				AE73690C2A4A4FDB009442AA /* RecingInfo */,
@@ -106,6 +116,7 @@
 		AE73690C2A4A4FDB009442AA /* RecingInfo */ = {
 			isa = PBXGroup;
 			children = (
+				AE5812052A64F68400340A32 /* SampleRaces.json */,
 				AE8E95CB2A4A64220026CEAF /* Info.plist */,
 				AE73690D2A4A4FDB009442AA /* RecingInfoApp.swift */,
 				AE73690F2A4A4FDB009442AA /* ContentView.swift */,
@@ -127,7 +138,8 @@
 		AE73691D2A4A4FDE009442AA /* RecingInfoTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE73691E2A4A4FDE009442AA /* RecingInfoTests.swift */,
+				AED6D3042A60AB2000A5C3AE /* Mocks */,
+				AE73691E2A4A4FDE009442AA /* RacingModelTests.swift */,
 			);
 			path = RecingInfoTests;
 			sourceTree = "<group>";
@@ -146,6 +158,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AED6D3042A60AB2000A5C3AE /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AED6D3052A60AB2800A5C3AE /* MockNetworkClient.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +187,7 @@
 			packageProductDependencies = (
 				AE8E95CC2A4A642F0026CEAF /* Network */,
 				AE8E95CE2A4A64620026CEAF /* Models */,
+				AED6D2FF2A60A62B00A5C3AE /* Utils */,
 			);
 			productName = RecingInfo;
 			productReference = AE73690A2A4A4FDB009442AA /* RecingInfo.app */;
@@ -186,6 +207,9 @@
 				AE73691C2A4A4FDE009442AA /* PBXTargetDependency */,
 			);
 			name = RecingInfoTests;
+			packageProductDependencies = (
+				AE5812032A64EFBF00340A32 /* Utils */,
+			);
 			productName = RecingInfoTests;
 			productReference = AE73691A2A4A4FDE009442AA /* RecingInfoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -256,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE5812062A64F68400340A32 /* SampleRaces.json in Resources */,
 				AE7369152A4A4FDD009442AA /* Preview Assets.xcassets in Resources */,
 				AE7369122A4A4FDD009442AA /* Assets.xcassets in Resources */,
 			);
@@ -292,7 +317,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE73691F2A4A4FDE009442AA /* RecingInfoTests.swift in Sources */,
+				AE73691F2A4A4FDE009442AA /* RacingModelTests.swift in Sources */,
+				AED6D3062A60AB2800A5C3AE /* MockNetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +639,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AE5812032A64EFBF00340A32 /* Utils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utils;
+		};
 		AE8E95CC2A4A642F0026CEAF /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Network;
@@ -620,6 +650,10 @@
 		AE8E95CE2A4A64620026CEAF /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
+		};
+		AED6D2FF2A60A62B00A5C3AE /* Utils */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
